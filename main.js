@@ -8,17 +8,21 @@ document.getElementById("modal").className = "hidden"
 
 const hearts = document.getElementsByClassName("like-glyph")
 
-
-for (const heart of hearts){
-  heart.addEventListener("click", handleClick)
+for (const heart of hearts) {
+  heart.addEventListener("click", (e) => {
+    if (e.target.innerHTML = EMPTY_HEART) {
+      mimicServerCall()
+      .then((resolve) => e.target.innerHTML = FULL_HEART)
+      .then((resolve) => e.target.className = "activated-heart")
+      .catch((error) => document.getElementById("modal").classList.remove("hidden"))
+      setTimeout(() => document.getElementById("modal").className = "hidden", 3000)
+      console.log(hearts)
+    } else if (e.target.innerHTML = FULL_HEART) {
+      console.log(e)
+    }
+  })
 }
 
-function handleClick() {
-  mimicServerCall()
-  .then((resolve) => document.getElementsByClassName("like-glyph").textContent = FULL_HEART)
-  .catch((error) => document.getElementById("modal").classList.remove("hidden"))
-  setTimeout(() => document.getElementById("modal").className = "hidden", 3000)
-}
 
 
 //------------------------------------------------------------------------------
