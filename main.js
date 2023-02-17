@@ -4,7 +4,45 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+document.getElementById("modal").className = "hidden"
 
+const hearts = document.getElementsByClassName("like-glyph")
+//console.log(hearts[0])
+
+//const test = hearts[0]
+
+//console.log(test.textContent)
+/*
+for (const heart of hearts){
+  heart.addEventListener("click", mimicServerCall()
+    .then((response => document.getElementsByClassName("like-glyph").textContent = FULL_HEART))
+    .catch((error) => {
+      document.getElementById("modal").removeAttribute("hidden")
+      document.body.append(error.message)}),
+  setTimeout(() => {document.getElementById("modal").className = "hidden"}, 3000)
+    )
+}
+
+
+for (const heart of hearts){
+  heart.addEventListener("click", mimicServerCall()
+    .then((resolve) => document.getElementsByClassName("like-glyph").textContent = FULL_HEART)
+    .catch((error) => document.getElementById("modal").classList.remove("hidden")))
+    setTimeout(() => document.getElementById("modal").className = "hidden", 3000)
+  }
+*/
+
+for (const heart of hearts){
+  heart.addEventListener("click", handleClick)
+}
+
+
+function handleClick() {
+  mimicServerCall()
+  .then((resolve) => heart.textContent = FULL_HEART)
+  .catch((error) => document.getElementById("modal").classList.remove("hidden"))
+  setTimeout(() => document.getElementById("modal").className = "hidden", 3000)
+}
 
 
 //------------------------------------------------------------------------------
